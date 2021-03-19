@@ -28,6 +28,21 @@ gui.add(params, "Download_Image")
 //       Drawing
 // -------------------
 
+function draw_some_lines(min_y_begin, max_y_begin, min_y_end, max_y_end, min_x_begin, max_x_begin, min_x_end, max_x_end, center, t_increment) {
+    for (let i = 0; i <= random(30, 45); i++){
+        for (let t = 0; t < 1; t += t_increment) {
+            const couleur = lerpColor(
+                color(255, 0, 0, params.transparenceR), 
+                color(255, 255, 0, params.transparenceJ),
+                t
+              )
+            const y = lerp(random(min_y_begin, max_y_begin), random(min_y_end, max_y_end), t)
+            stroke(couleur)
+            line(random(min_x_begin, max_x_begin), center, random(min_x_end, max_x_end),y)
+        }
+    }
+}
+
 function draw() {
     randomSeed(params.raffraichissement)
     background('black')
@@ -38,196 +53,111 @@ function draw() {
     //RAJOUTER A BALLE DE TRAITS LE SANG
     
     //figure 1
-        for (let i = 0; i <= random(30, 45); i++){
-            for (let t = 0; t < 1; t += 0.1) {
-                const couleur = lerpColor(
-                    color(255, 0, 0, params.transparenceR), 
-                    color(255, 255, 0, params.transparenceJ),
-                    t
-                  )
-                const y = lerp(random(40, 60), random(90, 120), t)
-                stroke(couleur, params.transparence)
-                line(random(-16, -24), params.centre1, random(50, 100),y)
-            }
-        }
+    draw_some_lines(
+        40, 60, 90, 120,
+        -16, -24, 50, 100,
+        params.centre1, 0.1
+    )
+    draw_some_lines(
+        -40, -60, -90, -115,
+        -16, -24, -50, -100,
+        params.centre1, 0.1
+    )
 
-        for (let i = 0; i <= random(30, 45); i++){
-            for (let t = 0; t < 1; t += 0.1) {
-                const couleur = lerpColor(
-                    color(255, 0, 0, params.transparenceR), 
-                    color(255, 255, 0, params.transparenceJ),
-                    t
-                  )
-                const y = lerp(random(-40, -60), random(-90, -115), t)
-                stroke(couleur, params.transparence)
-                line(random(-16, -24), params.centre1, random(-50, -100),y)
-            }
-        }
+    let existence12 = random(1, 10)
+    if (existence12 <= 9){
+        draw_some_lines(
+            -10, 10, 70, 90,
+            -16, -24, -100, -150,
+            params.centre1, 0.1
+        )
+    }
 
-        let existence12 = random(1, 10)
-        if (existence12 <= 9){
-            for (let i = 0; i <= random(30, 45); i++){
-                for (let t = 0; t < 1; t += 0.1) {
-                    const couleur = lerpColor(
-                        color(255, 0, 0, params.transparenceR), 
-                        color(255, 255, 0, params.transparenceJ),
-                        t
-                      )
-                    const y = lerp(random(-10, 10), random(70, 90), t)
-                    stroke(couleur, params.transparence)
-                    line(random(-16, -24), params.centre1, random(-100, -150),y)
-                }
-            }
-        }
-
-        let existence13 = random(1, 9)
-        if (existence13 <= 8){
-            for (let i = 0; i <= random(30, 45); i++){
-                for (let t = 0; t < 1; t += 0.12) {
-                    const couleur = lerpColor(
-                        color(255, 0, 0, params.transparenceR), 
-                        color(255, 255, 0, params.transparenceJ),
-                        t
-                      )
-                    const y = lerp(random(40, 60), random(-10, 10), t)
-                    stroke(couleur, params.transparence)
-                    line(random(-16, -24), params.centre1, random(50, 150),y)
-                }
-            }
-        }
+    let existence13 = random(1, 9)
+    if (existence13 <= 8){
+        draw_some_lines(
+            40, 60, -10, 10,
+            -16, -24, 50, 150,
+            params.centre1, 0.12
+        )
+    }
 
 
 
-        //figure 2
-        let existence21 = random(1, 8)
-        if (existence21 <= 7){
-            for (let i = 0; i <= random(30, 45); i++){
-                for (let t = 0; t < 1; t += 0.1) {
-                    const couleur = lerpColor(
-                        color(255, 0, 0, params.transparenceR), 
-                        color(255, 255, 0, params.transparenceJ),
-                        t
-                      )
-                    const y = lerp(random(-40, -60), random(-90, -120), t)
-                    stroke(couleur, params.transparence)
-                    line(random(40, 48), params.centre2, random(150, 200),y)
-                }
-            }
-        }
+    //figure 2
+    let existence21 = random(1, 8)
+    if (existence21 <= 7){
+        draw_some_lines(
+            -40, -60, -90, -120,
+            40, 48, 150, 200,
+            params.centre2, 0.1
+        )
+    }
 
-        let existence22 = random(1, 8)
-        if (existence22 <= 7){   
-            for (let i = 0; i <= random(30, 45); i++){
-                for (let t = 0; t < 1; t += 0.1) {
-                    const couleur = lerpColor(
-                        color(255, 0, 0, params.transparenceR), 
-                        color(255, 255, 0, params.transparenceJ),
-                        t
-                      )
-                    const y = lerp(random(-200, -250), random(-210, -250), t)
-                    stroke(couleur, params.transparence)
-                    line(random(40, 48), params.centre2, random(-50, -100),y)
-                }
-            }
-        }
+    let existence22 = random(1, 8)
+    if (existence22 <= 7){
+        draw_some_lines(
+            -200, -250, -210, -250,
+            40, 48, -50, -100,
+            params.centre2, 0.1
+        )
+    }
 
-            let existence23 = random(1, 6)
-            if (existence23 <= 5){
-                for (let i = 0; i <= random(30, 45); i++){
-                    for (let t = 0; t < 1; t += 0.1) {
-                        const couleur = lerpColor(
-                            color(255, 0, 0, params.transparenceR), 
-                            color(255, 255, 0, params.transparenceJ),
-                            t
-                          )
-                        const y = lerp(random(-50, -70), random(0, -30), t)
-                        stroke(couleur, params.transparence)
-                        line(random(40, 48), params.centre2, random(-100, -150),y)
-                    }
-                }
-            }
+    let existence23 = random(1, 6)
+    if (existence23 <= 5){
+        draw_some_lines(
+            -50, -70, 0, -30,
+            40, 48, -100, -150,
+            params.centre2, 0.1
+        )
+    }
 
-            let existence24 = random(1, 4)
-            if (existence24 <= 3){
-                for (let i = 0; i <= random(30, 45); i++){
-                    for (let t = 0; t < 1; t += 0.12) {
-                        const couleur = lerpColor(
-                            color(255, 0, 0, params.transparenceR), 
-                            color(255, 255, 0, params.transparenceJ),
-                            t
-                          )
-                        const y = lerp(random(-200, -220), random(-30, -50), t)
-                        stroke(couleur, params.transparence)
-                        line(random(40, 48), params.centre2, random(-100, -150),y)
-                    }
-                }
-            }
+    let existence24 = random(1, 4)
+    if (existence24 <= 3){
+        draw_some_lines(
+            -200, -220, -30, -50,
+            40, 48, -100, -150,
+            params.centre2, 0.12
+        )
+    }
         
 
-        //figure 3
-        let existence31 = random(0, 2)
-        if (existence31 <= 1){
-            for (let i = 0; i <= random(30, 45); i++){
-                for (let t = 0; t < 1; t += 0.1) {
-                    const couleur = lerpColor(
-                        color(255, 0, 0, params.transparenceR), 
-                        color(255, 255, 0, params.transparenceJ),
-                        t
-                      )
-                    const y = lerp(random(40, 60), random(150, 220), t)
-                    stroke(couleur, params.transparence)
-                    line(random(-108, -100), params.centre3, random(100, 150),y)
-                }
-            }
-        }
+    //figure 3
+    let existence31 = random(0, 2)
+    if (existence31 <= 1){
+        draw_some_lines(
+            40, 60, 150, 220,
+            -108, -100, 100, 150,
+            params.centre3, 0.1
+        )
+    }
 
-        let existence32 = random(0, 3)
-        if (existence32 <= 1){
-            for (let i = 0; i <= random(30, 45); i++){
-                for (let t = 0; t < 1; t += 0.1) {
-                    const couleur = lerpColor(
-                        color(255, 0, 0, params.transparenceR), 
-                        color(255, 255, 0, params.transparenceJ),
-                        t
-                      )
-                    const y = lerp(random(30, 50), random(10, 50), t)
-                    stroke(couleur, params.transparence)
-                    line(random(-108, -100), params.centre3, random(50, 100),y)
-                }
-            }
-        }
+    let existence32 = random(0, 3)
+    if (existence32 <= 1){
+        draw_some_lines(
+            30, 50, 10, 50,
+            -108, -100, 50, 100,
+            params.centre3, 0.1
+        )
+    }
 
-        let existence33 = random(0, 3)
-        if (existence33 <= 1){
-            for (let i = 0; i <= random(30, 45); i++){
-                for (let t = 0; t < 1; t += 0.1) {
-                    const couleur = lerpColor(
-                        color(255, 0, 0, params.transparenceR), 
-                        color(255, 255, 0, params.transparenceJ),
-                        t
-                      )
-                    const y = lerp(random(50, 70), random(100, 120), t)
-                    stroke(couleur, params.transparence)
-                    line(random(-108, -100), params.centre3, random(-150, -250),y)
-                }
-            }
-        }
+    let existence33 = random(0, 3)
+    if (existence33 <= 1){
+        draw_some_lines(
+            50, 70, 100, 120,
+            -108, -100, -150, -250,
+            params.centre3, 0.1
+        )
+    }
 
-        let existence34 = random(0, 4)
-        if (existence34 <= 1){
-            for (let i = 0; i <= random(30, 45); i++){
-                for (let t = 0; t < 1; t += 0.1) {
-                    const couleur = lerpColor(
-                        color(255, 0, 0, params.transparenceR), 
-                        color(255, 255, 0, params.transparenceJ),
-                        t
-                      )
-                    const y = lerp(random(250, 270), random(100, 120), t)
-                    stroke(couleur, params.transparence)
-                    line(random(-108, -100), params.centre3, random(-150, -250),y)
-                }
-            }
-        }
+    let existence34 = random(0, 4)
+    if (existence34 <= 1){
+        draw_some_lines(
+            250, 270, 100, 120,
+            -108, -100, -150, -250,
+            params.centre3, 0.1
+        )
+    }
         
 
 
